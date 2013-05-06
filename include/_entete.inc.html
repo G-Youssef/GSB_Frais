@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+    <head>
+        <title>Intranet du Laboratoire Galaxy-Swiss Bourdin</title>
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./styles/styles.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico" />
+    </head>
+    <body>
+        <div id="page">
+            <?php
+            if (estConnecte()) {
+            $idUser = obtenirIdUserConnecte();
+            $lgUser = obtenirDetailVisiteur($idConnexion, $idUser);
+            $nom = $lgUser['nom'];
+            $idCategorie = obtenirCategorieVisiteur($idConnexion, $idUser);
+            $prenom = $lgUser['prenom'];
+            if ($idCategorie == "comptable") {
+            ?>
+            <div id="enteteComptable">
+                <style type="text/css">
+                    body {background-color: rgb(238,136,68); color:#980101; }
+                </style>
+                <img src="./images/logo.jpg" id="logoGSB" alt="Laboratoire Galaxy-Swiss Bourdin" title="Laboratoire Galaxy-Swiss Bourdin" />
+                <h1>Suivi du remboursement des frais</h1>
+            </div>
+            <?php 
+            }
+            else { ?>
+            <div id="entete">
+                <img src="./images/logo.jpg" id="logoGSB" alt="Laboratoire Galaxy-Swiss Bourdin" title="Laboratoire Galaxy-Swiss Bourdin" />
+                <h1>Suivi du remboursement des frais</h1>
+            </div>
+            <?php
+            }
+            }
+            ?>
